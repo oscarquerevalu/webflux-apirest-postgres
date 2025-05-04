@@ -1,16 +1,16 @@
 version: "3.9"
 
 services:
-  java_app_v2:
-    container_name: java_app_v2
-    image: upc-3-java_app:1.0.0
+  java_app_v3:
+    container_name: java_app_v3
+    image: upc-4-java_app:1.0.0
     build: .
     ports:
       - 8080:8080
     networks:
       - db-net
     environment:
-      - DATABASE_URL=jdbc:postgresql://java_db_v7:5433/todo_db
+      - DATABASE_URL=r2dbc:postgresql://host.docker.internal:5433/todo_db?schema=public
       - DATABASE_USERNAME=userdev2
       - DATABASE_PASSWORD=userdev2
     depends_on:

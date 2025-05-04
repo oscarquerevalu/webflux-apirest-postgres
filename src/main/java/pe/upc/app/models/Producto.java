@@ -1,24 +1,24 @@
 package pe.upc.app.models;
 
+import org.springframework.data.annotation.Id;
 
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-
-@Entity
-@Table(name="producto")
 public class Producto {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(name="name")
 	private String name;
+	
+
+	public Producto() {
+
+	}
+
+	public Producto(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 
 	public Long getId() {
 		return id;

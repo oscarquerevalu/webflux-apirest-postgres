@@ -19,9 +19,11 @@ public class ProductoServiceImpl implements ProductoService{
 	@Override
 	public Flux<Producto> findAll() {		
 		
-		List<Producto> productosDB = productoDao.findAll();
+		/*List<Producto> productosDB = productoDao.findAll();
 		
-		return Flux.fromStream(productosDB.stream());
+		return Flux.fromStream(productosDB.stream());*/
+		
+		return productoDao.findAll();
 				
 	}
 	
