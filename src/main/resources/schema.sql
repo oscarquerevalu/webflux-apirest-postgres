@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS public.producto
+(
+    id   BIGINT GENERATED ALWAYS AS IDENTITY,
+    name TEXT NOT NULL
+);

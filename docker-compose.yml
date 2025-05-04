@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  java_app_v2:
+    container_name: java_app_v2
+    image: upc-3-java_app:1.0.0
+    build: .
+    ports:
+      - 8080:8080
+    networks:
+      - db-net
+    environment:
+      - DATABASE_URL=jdbc:postgresql://java_db_v7:5433/todo_db
+      - DATABASE_USERNAME=userdev2
+      - DATABASE_PASSWORD=userdev2
+    depends_on:
+      - java_db_v7
+  java_db_v7:
+    container_name: java_db_v7
+    image: postgres:latest
+    ports:
+      - 5433:5433
+    environment:
+      POSTGRES_USER: userdev2
+      POSTGRES_PASSWORD: userdev2
+      POSTGRES_DB: todo_db
+    networks:
+      - db-net
+    volumes:
+      - ./backups:/home/backups
+    command: -p 5433
+networks:
+  db-net:
+    driver: bridge
+volumes:
+  postgres-data-dev:
+    driver: local
